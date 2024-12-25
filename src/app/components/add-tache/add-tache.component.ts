@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TacheService } from '../../service/tache.service';
-import { Tache } from '../../models/tache';
+import { Router } from '@angular/router';
+import { MatDialogRef } from '@angular/material/dialog';  
+
 @Component({
   selector: 'app-add-tache',
   templateUrl: './add-tache.component.html',
@@ -12,7 +14,8 @@ export class AddTacheComponent implements OnInit {
   tacheForm: FormGroup;
   message: string = '';
 
-  constructor(private fb: FormBuilder, private tacheService: TacheService) {
+  constructor(private fb: FormBuilder, private tacheService: TacheService, private router: Router, public dialogRef: MatDialogRef<AddTacheComponent>  // Injecter MatDialogRef pour fermer le dialogue
+  ) {
     this.tacheForm = this.fb.group({
       titre: ['', Validators.required],
       description: ['', Validators.required],
@@ -27,13 +30,17 @@ export class AddTacheComponent implements OnInit {
   }
 
 
+  
   onSubmit() {
     if (this.tacheForm.valid) {
-      const newTache: Tache = this.tacheForm.value;
+      const newTache = this.tacheForm.value;
+
       this.tacheService.ajouterTache(newTache).subscribe({
         next: (response) => {
           this.message = 'Tâche ajoutée avec succès !';
           this.tacheForm.reset();
+          
+          this.dialogRef.close(true);
         },
         error: (error) => {
           console.error('Erreur lors de l\'ajout de la tâche :', error);

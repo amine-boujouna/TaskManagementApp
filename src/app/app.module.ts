@@ -11,11 +11,29 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatButtonModule } from '@angular/material/button';
+import { MatDialogModule } from '@angular/material/dialog';  
+import { ReactiveFormsModule } from '@angular/forms';
+import { AddTacheComponent } from './components/add-tache/add-tache.component';
+import { EditTacheComponent } from './components/edit-tache/edit-tache.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { ButtonModule } from 'primeng/button'; // Importer le module Button
+import { MatIconModule } from '@angular/material/icon';
+import { TestComponent } from './components/test/test.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     TacheListComponent,
+    AddTacheComponent,
+    EditTacheComponent,
+    SidebarComponent,
+    NavbarComponent,
+    TestComponent
   ],
   imports: [
     BrowserModule,
@@ -27,6 +45,15 @@ import { MatButtonModule } from '@angular/material/button';
     MatPaginatorModule,
     MatSortModule,
     MatButtonModule,
+    MatDialogModule,
+    ReactiveFormsModule,
+    MatSelectModule,
+    MatFormFieldModule,
+    MatInputModule,
+    ButtonModule,
+    MatIconModule
+    
+
   ],
   providers: [],
   bootstrap: [AppComponent]

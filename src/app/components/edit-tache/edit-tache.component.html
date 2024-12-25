@@ -1,0 +1,41 @@
+<div>
+  <h2>Modifer une tâche</h2>
+  <form [formGroup]="tacheForm">
+    <div>
+      <label for="titre">Titre</label>
+      <input id="titre" formControlName="titre" />
+    </div>
+    <div>
+      <label for="description">Description</label>
+      <textarea id="description" formControlName="description"></textarea>
+    </div>
+    <div>
+      <label for="datedebut">Date de début</label>
+      <input type="date" id="datedebut" formControlName="datedebut" />
+    </div>
+    <div>
+      <label for="datefin">Date de fin</label>
+      <input type="date" id="datefin" formControlName="datefin" />
+    </div>
+    <div>
+      <label for="etat">État</label>
+      <select id="etat" formControlName="etat">
+        <option value="COMPLETED">Completed</option>
+        <option value="IN_PROGRESS">In Progress</option>
+        <option value="PENDING">Pending</option>
+      </select>
+            </div>
+    <div>
+      <label for="priorite">Priorité</label>
+      <input id="priorite" formControlName="priorite" />
+    </div>
+    <div>
+      <label for="categorie">Catégorie</label>
+      <select id="categorie" formControlName="categorie">
+        <option value="Travail">Travail</option>
+        <option value="Personnel">Personnel</option>
+        <option value="Urgent">Urgent</option>
+      </select>      </div>
+    <button type="submit" [disabled]="!tacheForm.valid"  (click)="onSubmit()">Modifer</button>
+  </form>
+</div>

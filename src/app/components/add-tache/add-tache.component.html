@@ -1,80 +1,43 @@
 <div>
-  <h2>Ajouter une tâche</h2>
-  <form [formGroup]="tacheForm" (ngSubmit)="onSubmit()">
-    <!-- Titre -->
-    <mat-form-field appearance="fill">
-      <mat-label>Titre</mat-label>
-      <input matInput id="titre" formControlName="titre" required />
-      <mat-error *ngIf="tacheForm.get('titre')?.hasError('required')">
-        Le titre est requis
-      </mat-error>
-    </mat-form-field>
-
-    <!-- Description -->
-    <mat-form-field appearance="fill">
-      <mat-label>Description</mat-label>
-      <textarea matInput id="description" formControlName="description" required></textarea>
-      <mat-error *ngIf="tacheForm.get('description')?.hasError('required')">
-        La description est requise
-      </mat-error>
-    </mat-form-field>
-
-    <!-- Date de début -->
-    <mat-form-field appearance="fill">
-      <mat-label>Date de début</mat-label>
-      <input matInput [matDatepicker]="startDate" id="datedebut" formControlName="datedebut" required />
-      <mat-datepicker-toggle matSuffix [for]="startDate"></mat-datepicker-toggle>
-      <mat-datepicker #startDate></mat-datepicker>
-      <mat-error *ngIf="tacheForm.get('datedebut')?.hasError('required')">
-        La date de début est requise
-      </mat-error>
-    </mat-form-field>
-
-    <!-- Date de fin -->
-    <mat-form-field appearance="fill">
-      <mat-label>Date de fin</mat-label>
-      <input matInput [matDatepicker]="endDate" id="datefin" formControlName="datefin" required />
-      <mat-datepicker-toggle matSuffix [for]="endDate"></mat-datepicker-toggle>
-      <mat-datepicker #endDate></mat-datepicker>
-      <mat-error *ngIf="tacheForm.get('datefin')?.hasError('required')">
-        La date de fin est requise
-      </mat-error>
-    </mat-form-field>
-
-    <!-- État -->
-    <mat-form-field appearance="fill">
-      <mat-label>État</mat-label>
-      <input matInput id="etat" formControlName="etat" required />
-      <mat-error *ngIf="tacheForm.get('etat')?.hasError('required')">
-        L'état est requis
-      </mat-error>
-    </mat-form-field>
-
-    <!-- Priorité -->
-    <mat-form-field appearance="fill">
-      <mat-label>Priorité</mat-label>
-      <input matInput id="priorite" formControlName="priorite" required />
-      <mat-error *ngIf="tacheForm.get('priorite')?.hasError('required')">
-        La priorité est requise
-      </mat-error>
-    </mat-form-field>
-
-    <!-- Catégorie -->
-    <mat-form-field appearance="fill">
-      <mat-label>Catégorie</mat-label>
-      <input matInput id="categorie" formControlName="categorie" required />
-      <mat-error *ngIf="tacheForm.get('categorie')?.hasError('required')">
-        La catégorie est requise
-      </mat-error>
-    </mat-form-field>
-
-    <!-- Bouton Ajouter -->
-    <div class="form-actions">
-      <button mat-raised-button color="primary" type="submit" [disabled]="!tacheForm.valid">
-        Ajouter
-      </button>
-    </div>
-  </form>
-
-  <p *ngIf="message">{{ message }}</p>
-</div>
+    <h2>Ajouter une tâche</h2>
+    <form [formGroup]="tacheForm" (ngSubmit)="onSubmit()">
+      <div>
+        <label for="titre">Titre</label>
+        <input id="titre" formControlName="titre" />
+      </div>
+      <div>
+        <label for="description">Description</label>
+        <textarea id="description" formControlName="description"></textarea>
+      </div>
+      <div>
+        <label for="datedebut">Date de début</label>
+        <input type="date" id="datedebut" formControlName="datedebut" />
+      </div>
+      <div>
+        <label for="datefin">Date de fin</label>
+        <input type="date" id="datefin" formControlName="datefin" />
+      </div>
+      <div>
+        <label for="etat">État</label>
+        <select id="etat" formControlName="etat">
+          <option value="COMPLETED">Completed</option>
+          <option value="IN_PROGRESS">In Progress</option>
+          <option value="PENDING">Pending</option>
+        </select>
+              </div>
+      <div>
+        <label for="priorite">Priorité</label>
+        <input id="priorite" formControlName="priorite" />
+      </div>
+      <div>
+        <label for="categorie">Catégorie</label>
+        <select id="categorie" formControlName="categorie">
+          <option value="Travail">Travail</option>
+          <option value="Personnel">Personnel</option>
+          <option value="Urgent">Urgent</option>
+        </select>      </div>
+      <button type="submit" [disabled]="!tacheForm.valid">Ajouter</button>
+    </form>
+    <p *ngIf="message">{{ message }}</p>
+  </div>
+  

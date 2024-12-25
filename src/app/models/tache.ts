@@ -1,5 +1,5 @@
 export interface Tache {
-    id?: number; // Facultatif, généré par le backend
+    id: number; // Facultatif, généré par le backend
     titre: string;
     description: string;
     datedebut: Date;

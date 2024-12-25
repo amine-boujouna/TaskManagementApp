@@ -1,0 +1,46 @@
+nav {
+    width: 200px; /* Largeur fixe pour la sidebar */
+    height: 100vh; /* Prend toute la hauteur de la fenêtre */
+    background-color: #2c3e50; /* Couleur de fond */
+    position: fixed; /* Fixe la sidebar sur le côté gauche */
+    display: flex;
+    flex-direction: column; /* Positionne le contenu verticalement */
+    justify-content: flex-start; /* Aligne le contenu en haut */
+    align-items: center; /* Centre les éléments horizontalement */
+    padding-top: 200px; /* Ajuste la position des liens en haut */
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%; /* Prend toute la largeur disponible */
+}
+
+li {
+    margin: 30px 0; /* Espacement entre les éléments */
+    text-align: center; /* Centre le texte */
+}
+
+a {
+    color: #ecf0f1;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+a:hover {
+    color: #3498db;
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+  }
+  
+  .menu-icon {
+    margin-right: 8px; /* espace entre l'icône et le texte */
+  }
+  
+  

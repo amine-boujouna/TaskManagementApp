@@ -1,5 +1,5 @@
 .table-container {
-    margin: 20px;
+    margin: 200px;
     padding: 10px;
     background: #ffffff;
     border-radius: 8px;
@@ -16,4 +16,19 @@
   .mat-paginator {
     margin-top: 10px;
   }
+
+  .button-container{
+    display: flex;
+    justify-content: flex-end;
+  }
+
+.custom-icon {
+  font-size: 36px;
+}
+th{
+  font-weight: bold;
+  font-size: 15px;
+  color: black;
+}
+  
   

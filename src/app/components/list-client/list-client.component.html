@@ -1,0 +1,63 @@
+<div class="container mt-4">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h2 class="text-center">Liste des Clients</h2>
+    <!-- Bouton Ajouter -->
+    <div class="button-container">
+      <button mat-button color="primary" class="larger-button">
+        <mat-icon class="custom-icon" (click)="openAddDialog()"
+          >add_circle</mat-icon
+        >
+      </button>
+    </div>
+  </div>
+  <div class="row mb-3">
+    <div class="col-md-6">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Rechercher un client"
+        [(ngModel)]="searchQuery"
+        (input)="searchClients()"
+      />
+    </div>
+  </div>
+
+  <table class="table table-striped mt-3">
+    <thead class="table-dark">
+      <tr>
+        <th>Nom</th>
+        <th>Prénom</th>
+        <th>Email</th>
+        <th>Téléphone</th>
+        <th>Adresse</th>
+        <th>Ville</th>
+        <th>Date de Naissance</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let client of clients">
+        <td>{{ client.nom }}</td>
+        <td>{{ client.prenom }}</td>
+        <td>{{ client.email }}</td>
+        <td>{{ client.telephone }}</td>
+        <td>{{ client.adress }}</td>
+        <td>{{ client.city }}</td>
+        <td>{{ client.datenaissance | date : "dd/MM/yyyy" }}</td>
+        <td>
+          <button mat-button color="primary" (click)="openEditDialog(client)">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-button color="warn" (click)="deleteClient(client.id)">
+            <mat-icon>delete_outline</mat-icon>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="pagination">
+    <button (click)="previousPage()" [disabled]="isFirstPage">Précédent</button>
+    <span>Page {{ page + 1 }} sur {{ totalPages }}</span>
+    <button (click)="nextPage()" [disabled]="isLastPage">Suivant</button>
+  </div>
+</div>

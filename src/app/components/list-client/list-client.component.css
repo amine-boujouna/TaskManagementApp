@@ -1,0 +1,9 @@
+.larger-button {
+    font-size: 18px;  /* Ajustez cette valeur selon vos besoins */
+    padding: 12px 24px;  /* Augmentez les espacements internes pour un bouton plus grand */
+  }
+  
+  .larger-button .custom-icon {
+    font-size: 40px;  /* Augmenter la taille de l'icône */
+  }
+  

@@ -17,6 +17,8 @@ export class TacheListComponent implements OnInit {
   dataSource = new MatTableDataSource<any>();
   totalLength = 0;
   taches: any[] = [];
+  selectedCategorie: string = '';
+
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -34,6 +36,38 @@ export class TacheListComponent implements OnInit {
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
     });
+  }
+
+  loadTasksByCategorie(categorie: string): void {
+    this.tacheService.getTachesByCategorie(categorie).subscribe((tasks: any[]) => {
+      this.dataSource.data = tasks;
+      this.totalLength = tasks.length;
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+    });
+  }
+   // Ajout de la méthode pour filtrer par catégorie
+   onCategoryChange(categorie: string): void {
+    this.selectedCategorie = categorie;
+    this.loadTasksByCategorie(categorie);  // Filtrer les tâches par catégorie
+  }
+   // Méthode pour charger les tâches triées par date
+   loadTachesSorted(order: string = 'asc'): void {
+    this.tacheService.getTachesSorted(order).subscribe({
+      next: (taches) => {
+        this.dataSource.data = taches; // Assigner les tâches triées à la source de données
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
+      },
+      error: (err) => {
+        console.error('Erreur lors du chargement des tâches triées', err);
+      }
+    });
+  }
+
+  // Méthode pour changer l'ordre du tri
+  changeSortOrder(order: string): void {
+    this.loadTachesSorted(order); // Recharger les tâches avec l'ordre trié
   }
 
   editTask(task: any): void {

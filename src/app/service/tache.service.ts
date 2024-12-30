@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 
@@ -37,5 +37,13 @@ export class TacheService {
 
   updateTache(id: number, updatedTache: Tache): Observable<Tache> {
     return this.http.put<Tache>(`${this.apiUrl}/${id}`, updatedTache);
+  }
+  getTachesByCategorie(categorie: string): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/categorie/${categorie}`);
+  }
+   // Méthode pour récupérer les tâches triées
+   getTachesSorted(order: string = 'asc'): Observable<any[]> {
+    const params = new HttpParams().set('order', order); // Paramètre "order"
+    return this.http.get<any[]>(`${this.apiUrl}/sorted`, { params });
   }
 }

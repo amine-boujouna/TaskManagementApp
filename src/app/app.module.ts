@@ -12,7 +12,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';  
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AddTacheComponent } from './components/add-tache/add-tache.component';
 import { EditTacheComponent } from './components/edit-tache/edit-tache.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -23,6 +23,9 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { ButtonModule } from 'primeng/button'; // Importer le module Button
 import { MatIconModule } from '@angular/material/icon';
 import { TestComponent } from './components/test/test.component';
+import { ListClientComponent } from './components/list-client/list-client.component';
+import { AddClientComponent } from './components/add-client/add-client.component';
+import { EditClientComponent } from './components/edit-client/edit-client.component';
 
 
 @NgModule({
@@ -33,7 +36,10 @@ import { TestComponent } from './components/test/test.component';
     EditTacheComponent,
     SidebarComponent,
     NavbarComponent,
-    TestComponent
+    TestComponent,
+    ListClientComponent,
+    AddClientComponent,
+    EditClientComponent
   ],
   imports: [
     BrowserModule,
@@ -51,7 +57,8 @@ import { TestComponent } from './components/test/test.component';
     MatFormFieldModule,
     MatInputModule,
     ButtonModule,
-    MatIconModule
+    MatIconModule,
+    FormsModule
     
 
   ],

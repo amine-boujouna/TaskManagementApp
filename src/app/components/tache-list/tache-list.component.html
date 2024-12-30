@@ -1,9 +1,22 @@
 <div class="table-container mat-elevation-z8">
+  <!-- Ajouter un sélecteur de catégorie en haut -->
+<div class="category-filter">
+  <mat-form-field appearance="outline">
+    <mat-label>Filtrer par catégorie</mat-label>
+    <mat-select (selectionChange)="onCategoryChange($event.value)">
+      <mat-option value="Travail">Travail</mat-option>
+      <mat-option value="Personnel">Personnel</mat-option>
+      <mat-option value="Urgent">Urgent</mat-option>
+      <!-- Ajoutez d'autres catégories selon votre besoin -->
+    </mat-select>
+  </mat-form-field>
+</div>
   <div class="button-container">
     <button mat-button color="primary" (click)="openAddTacheDialog()" ><mat-icon class="custom-icon">add_circle</mat-icon></button>
-    
-
-
+  </div>
+  <div class="sort-container">
+    <button mat-button (click)="changeSortOrder('asc')">Trier Asc DateDebut</button>
+    <button mat-button (click)="changeSortOrder('desc')">Trier Desc DateDebut</button>
   </div>
     <table mat-table [dataSource]="dataSource" matSort class="full-width-table">
   
@@ -67,7 +80,7 @@
   <mat-paginator
     [length]="totalLength"
     [pageSize]="5"
-    [pageSizeOptions]="[5, 10, 20,50]"
+    [pageSizeOptions]="[5, 10, 20]"
     aria-label="Select number of tasks per page">
   </mat-paginator>
 </div>
